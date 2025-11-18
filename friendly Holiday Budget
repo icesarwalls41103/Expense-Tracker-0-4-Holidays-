@@ -19,7 +19,7 @@ expenses = [
     {"item": "Netflix", "category": "Entertainment", "amount": 9.07, "date": f"{year}-{month:02d}-27"},
     {"item": "Groceries (Week 4)", "category": "Groceries", "amount": 100, "date": f"{year}-{month:02d}-28"},
 
-    {"item": "Holiday Expenses", "category": "Holiday", "amount": 350, "date": f"{year}-{month:02d}-29"},
+    {"item": "Holiday Expenses", "category": "Holiday", "amount": 750, "date": f"{year}-{month:02d}-29"},
 ]
 
 month_name = calendar.month_name[month]
