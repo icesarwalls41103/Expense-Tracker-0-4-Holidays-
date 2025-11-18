@@ -1,0 +1,55 @@
+import calendar
+
+year = 2025
+month = 11
+monthly_income = 6000
+monthly_savings_goal = 1000
+
+expenses = [
+    {"item": "Rent", "category": "Housing", "amount": 1500, "date": f"{year}-{month:02d}-01"},
+    {"item": "Health Insurance", "category": "Health", "amount": 117, "date": f"{year}-{month:02d}-01"},
+    {"item": "Car Note + Insurance", "category": "Transportation", "amount": 600, "date": f"{year}-{month:02d}-05"},
+    {"item": "Groceries (Week 1)", "category": "Groceries", "amount": 100, "date": f"{year}-{month:02d}-07"},
+    {"item": "Groceries (Week 2)", "category": "Groceries", "amount": 100, "date": f"{year}-{month:02d}-14"},
+    {"item": "Internet", "category": "Utilities", "amount": 65, "date": f"{year}-{month:02d}-18"},
+
+    {"item": "Disney+", "category": "Entertainment", "amount": 13.60, "date": f"{year}-{month:02d}-19"},
+
+    {"item": "Groceries (Week 3)", "category": "Groceries", "amount": 100, "date": f"{year}-{month:02d}-21"},
+    {"item": "Netflix", "category": "Entertainment", "amount": 9.07, "date": f"{year}-{month:02d}-27"},
+    {"item": "Groceries (Week 4)", "category": "Groceries", "amount": 100, "date": f"{year}-{month:02d}-28"},
+
+    {"item": "Holiday Expenses", "category": "Holiday", "amount": 350, "date": f"{year}-{month:02d}-29"},
+]
+
+month_name = calendar.month_name[month]
+print(f"\n========== {month_name.upper()} {year} ==========")
+print(calendar.month(year, month))
+print(f"Monthly Income: ${monthly_income:.2f}\n")
+
+print("--- Expense List ---")
+for e in expenses:
+    print(f"{e['date']} | {e['item']} (${e['amount']:.2f}) - {e['category']}")
+
+total_expenses = sum(e["amount"] for e in expenses)
+remaining_income = monthly_income - total_expenses
+
+if remaining_income >= monthly_savings_goal:
+    savings = monthly_savings_goal
+    remaining_income -= savings
+else:
+    savings = max(0, remaining_income)
+    remaining_income = 0
+
+category_totals = {}
+for e in expenses:
+    category_totals[e["category"]] = category_totals.get(e["category"], 0) + e["amount"]
+
+print("\n--- Category Totals ---")
+for category, amount in category_totals.items():
+    print(f"{category}: ${amount:.2f}")
+
+print("\n--- Monthly Summary ---")
+print(f"Total Expenses: ${total_expenses:.2f}")
+print(f"Savings Added: ${savings:.2f}")
+print(f"Remaining Balance: ${remaining_income:.2f}")
